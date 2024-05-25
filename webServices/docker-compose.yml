@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  webServices-nginx:
+    image: nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx/conf.d/plane.zhgchg.li.conf:/etc/nginx/conf.d/plane.zhgchg.li.conf
+
+    ports:
+      - 80:80
+      - 443:443
+
+    networks:
+      - plane-app_default
+networks:
+  plane-app_default:
+    external: true
